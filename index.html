@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Puneet's Pages</title>
+<meta name="description" content="Everything Puneet Kumar has built and published: learning guides, games and portfolio pages.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --ground:#F2F4F8; --surface:#FFFFFF; --surface-2:#E9EDF5; --ink:#131A2B; --muted:#586179;
+  --line:#C9CFDB; --accent:#2446B5; --accent-soft:#E1E7FA;
+  --t-learn:#1D7550; --t-learn-soft:#DCF0E5;
+  --t-game:#8A5A00; --t-game-soft:#FBEFD2;
+  --t-port:#2446B5; --t-port-soft:#E1E7FA;
+  --t-old:#586179; --t-old-soft:#E9EDF5;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    color-scheme:dark;
+    --ground:#0D111C; --surface:#151B2A; --surface-2:#1C2336; --ink:#E5E9F3; --muted:#9BA4BA;
+    --line:#2E3750; --accent:#93A9FF; --accent-soft:#1F2A4F;
+    --t-learn:#62CE9C; --t-learn-soft:#143025;
+    --t-game:#F0C265; --t-game-soft:#352A12;
+    --t-port:#93A9FF; --t-port-soft:#1F2A4F;
+    --t-old:#9BA4BA; --t-old-soft:#1C2336;
+  }
+}
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--display);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:920px;margin:0 auto;padding-inline:20px;padding-block:72px 64px}
+
+header{margin-bottom:48px}
+.handle{font-family:var(--mono);font-size:13px;color:var(--muted);margin:0 0 18px;display:flex;align-items:center;gap:10px}
+.handle .mark{width:28px;height:28px;border-radius:8px;background:var(--accent);color:var(--surface);display:grid;place-items:center;font-weight:600;font-size:13px}
+h1{font-weight:800;font-size:clamp(40px,7vw,68px);line-height:1;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance}
+.lede{font-size:20px;color:var(--muted);max-width:56ch;margin:0}
+.links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;font-size:15px}
+.links a{color:var(--accent);text-decoration:none;font-weight:600}
+.links a:hover{text-decoration:underline}
+
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.filters button{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:99px;padding:6px 14px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--ground)}
+.count{font-family:var(--mono);font-size:12px;opacity:.7;margin-left:4px}
+
+ol.pages{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.page{display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:6px 22px;align-items:start;padding:24px 4px;border-bottom:1px solid var(--line);position:relative}
+.page:hover{background:color-mix(in srgb,var(--surface) 60%,transparent)}
+.year{font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:7px;font-variant-numeric:tabular-nums}
+.page h2{font-size:clamp(22px,3vw,27px);font-weight:800;letter-spacing:-.015em;line-height:1.15;margin:0 0 6px}
+.page h2 a{text-decoration:none}
+.page h2 a::after{content:"";position:absolute;inset:0}
+.page h2 a:hover{color:var(--accent)}
+.page p{margin:0;color:var(--muted);max-width:60ch;font-size:16.5px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+.tag{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:6px}
+.tag.learn{background:var(--t-learn-soft);color:var(--t-learn)}
+.tag.game{background:var(--t-game-soft);color:var(--t-game)}
+.tag.port{background:var(--t-port-soft);color:var(--t-port)}
+.tag.old{background:var(--t-old-soft);color:var(--t-old)}
+.lang{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.side{display:flex;flex-direction:column;align-items:flex-end;gap:8px;padding-top:5px;position:relative;z-index:1}
+.open{font-size:14px;font-weight:600;color:var(--accent);text-decoration:none;white-space:nowrap}
+.src{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;white-space:nowrap}
+.src:hover,.open:hover{text-decoration:underline}
+.page.new .year::after{content:"new";display:block;margin-top:6px;width:max-content;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--surface);background:var(--t-learn);border-radius:4px;padding:1px 6px}
+
+footer{margin-top:40px;font-size:14px;color:var(--muted);font-family:var(--mono)}
+
+@media (max-width:640px){
+  .wrap{padding-block:44px 48px;padding-inline:16px}
+  .page{grid-template-columns:minmax(0,1fr);gap:4px;padding:20px 2px}
+  .year{padding-top:0}
+  .page.new .year::after{display:inline-block;margin:0 0 0 8px}
+  .side{flex-direction:row;align-items:center;justify-content:flex-start;gap:16px;margin-top:8px}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="handle"><span class="mark">PK</span>github.com/puneetrkrajput</p>
+    <h1>Puneet's pages</h1>
+    <p class="lede">Things I've built while learning backend engineering: study guides, a game that teaches JavaScript internals, and my portfolio. Most of the learning pages work in both English and Hinglish.</p>
+    <div class="links">
+      <a href="https://github.com/puneetrkrajput">GitHub profile</a>
+      <a href="https://puneetrkrajput.github.io/Puneet-backend-portfolio/">Portfolio</a>
+    </div>
+  </header>
+
+  <div class="filters" role="group" aria-label="Filter pages">
+    <button type="button" data-f="all" aria-pressed="true">All<span class="count"></span></button>
+    <button type="button" data-f="learn" aria-pressed="false">Learning<span class="count"></span></button>
+    <button type="button" data-f="game" aria-pressed="false">Games<span class="count"></span></button>
+    <button type="button" data-f="port" aria-pressed="false">Portfolio<span class="count"></span></button>
+    <button type="button" data-f="old" aria-pressed="false">Early projects<span class="count"></span></button>
+  </div>
+
+  <!-- To add a page: copy one <li class="page"> block, set data-kind (learn | game | port | old). -->
+  <ol class="pages" id="pages">
+    <li class="page new" data-kind="learn">
+      <span class="year">2026</span>
+      <div>
+        <h2><a href="./backend-zero-to-hero/">Backend Zero to Hero</a></h2>
+        <p>All 130 backend interview questions across 13 topics (indexing, transactions, caching, queues, auth, Docker, debugging and more), each taught from zero as a story before showing how to answer it out loud.</p>
+        <div class="meta"><span class="tag learn">Learning guide</span><span class="lang">English · Hinglish</span></div>
+      </div>
+      <div class="side"><a class="open" href="./backend-zero-to-hero/">Open guide</a><a class="src" href="https://github.com/puneetrkrajput/puneetrkrajput.github.io/tree/main/backend-zero-to-hero">source</a></div>
+    </li>
+    <li class="page" data-kind="game">
+      <span class="year">2026</span>
+      <div>
+        <h2><a href="https://puneetrkrajput.github.io/inside-the-engine/">Inside The Engine</a></h2>
+        <p>A story-mode game that teaches JavaScript internals by letting you operate the machine by hand.</p>
+        <div class="meta"><span class="tag game">Game</span><span class="lang">English · Hinglish</span></div>
+      </div>
+      <div class="side"><a class="open" href="https://puneetrkrajput.github.io/inside-the-engine/">Play</a><a class="src" href="https://github.com/puneetrkrajput/inside-the-engine">source</a></div>
+    </li>
+    <li class="page" data-kind="port">
+      <span class="year">2025</span>
+      <div>
+        <h2><a href="https://puneetrkrajput.github.io/Puneet-backend-portfolio/">Backend portfolio</a></h2>
+        <p>My portfolio as a backend engineer: projects, skills and how to reach me.</p>
+        <div class="meta"><span class="tag port">Portfolio</span></div>
+      </div>
+      <div class="side"><a class="open" href="https://puneetrkrajput.github.io/Puneet-backend-portfolio/">Open</a><a class="src" href="https://github.com/puneetrkrajput/Puneet-backend-portfolio">source</a></div>
+    </li>
+    <li class="page" data-kind="old">
+      <span class="year">2023</span>
+      <div>
+        <h2><a href="https://puneetrkrajput.github.io/project/">B2B landing page</a></h2>
+        <p>An early frontend practice project: a French-language landing page for a B2B e-invoicing and EDI product, built with HTML and CSS.</p>
+        <div class="meta"><span class="tag old">Early project</span><span class="lang">French</span></div>
+      </div>
+      <div class="side"><a class="open" href="https://puneetrkrajput.github.io/project/">Open</a><a class="src" href="https://github.com/puneetrkrajput/project">source</a></div>
+    </li>
+  </ol>
+
+  <footer>Hosted on GitHub Pages · puneetrkrajput.github.io</footer>
+</div>
+<script>
+(function(){
+  var items=[].slice.call(document.querySelectorAll('.page'));
+  var btns=[].slice.call(document.querySelectorAll('.filters button'));
+  btns.forEach(function(b){
+    var f=b.dataset.f;
+    var n=f==='all'?items.length:items.filter(function(i){return i.dataset.kind===f}).length;
+    b.querySelector('.count').textContent=n;
+    if(!n&&f!=='all')b.hidden=true;
+    b.addEventListener('click',function(){
+      btns.forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});
+      items.forEach(function(i){i.hidden=!(f==='all'||i.dataset.kind===f)});
+    });
+  });
+})();
+</script>
+</body>
+</html>
